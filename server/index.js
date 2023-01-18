@@ -32,8 +32,8 @@ app.post('/api/insert', (req, res) => {
     const sqlInsert = "INSERT INTO movie_review (movie_name, movie_review) VALUES (?,?);"
     db.query(sqlInsert, [movieName, movieReivew], (err, result) => {
         console.log(err);
-    })
-})
+    });
+});
 
 
 app.get("/", (req, res) => {
