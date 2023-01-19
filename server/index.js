@@ -35,6 +35,14 @@ app.post('/api/insert', (req, res) => {
     });
 });
 
+app.delete('/api/delete/:movieName',(req,res)=>{
+    const name = req.params.movieName;
+    const sqlDelete = "DELETE FROM movie_review WHERE movie_name = (?) ;";
+    db.query(sqlDelete, name, (err,result) => {
+        console.log(err);
+    });
+})
+
 
 app.get("/", (req, res) => {
     // const sqlInsert = "INSERT INTO movie_review (movie_name, movie_review) VALUES ('inception','good movie');"

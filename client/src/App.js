@@ -14,23 +14,19 @@ function App() {
     Axios.get('http://localhost:3001/api/get').then((response) => {
       setMovieReviewList(response.data);
     });
-  });//call only once
+  },[]);//call only once
 
   const submitReview = () => {
     Axios.post('http://localhost:3001/api/insert', {
       movieName: movieName,
       movieReview: review,
-    }).then(() => {
-      alert("success insert");
-    })
+    });
+    setMovieReviewList([...movieReviewList, { movieName: movieName, movieReview: review },]);
   };
-  const deleteReview = () => {
-    Axios.delete('http://localhost:3001/api/insert', {
-      movieName: movieName,
-      movieReview: review,
-    }).then(() => {
-      alert("success insert");
-    })
+
+  const deleteReview = (movie) => {
+    Axios.delete(`http://localhost:3001/api/delete/${movie}`);
+    console.log(movie);
   };
 
   return (
@@ -41,13 +37,20 @@ function App() {
         <input type="text" name="movieName" onChange={(e) => setMovieName(e.target.value)}></input>
         <label>Review</label>
         <input type="text" name="review" onChange={(e) => setReview(e.target.value)}></input>
-        <button onClick={submitReview}> Sutmit</button>
+        <button onClick={submitReview}> Submit</button>
       </div>
 
       {movieReviewList.map((val) => {
-        return <h1 key={val.id}>Movie Name: {val.movie_name} | Movie review: {val.movie_review} </h1>
+        return <> <div className="card">
+          <h1> {val.movie_name}</h1>
+          <p>  {val.movie_review}</p>
+          <input type="text" id="updateInput" />
+          <button>Update</button>
+          <br />
+          <button onClick={() => { deleteReview(val.movie_name) }}> Delete reviews</button>
+        </div> </>
       })}
-        <button onClick={deleteReview}> Delete reviews</button>
+
     </>
 
 
