@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 import Axios from 'axios'
-
+import Month from "./components/Month";
+// import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
     Axios.get('http://localhost:3001/api/get').then((response) => {
       setMovieReviewList(response.data);
     });
-  },[]);//call only once
+  });//call only once
 
   const submitReview = () => {
     Axios.post('http://localhost:3001/api/insert', {
@@ -31,7 +32,10 @@ function App() {
 
   return (
     <>
-      <h1>Add name and story</h1>
+      <h1>Calendar</h1>
+      <Month />
+
+      <h1 id="intro">Add name and story </h1>
       <div className="form">
         <label>Movie Name</label>
         <input type="text" name="movieName" onChange={(e) => setMovieName(e.target.value)}></input>

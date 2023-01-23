@@ -15,7 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());//middle ware, needs when requesting information from frontend to backend
 
-
 app.get('/api/get',(req,res)=>{
     const sqlSelect = "SELECT * FROM movie_review";
     db.query(sqlSelect, (err,result)=>{

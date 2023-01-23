@@ -1,0 +1,14 @@
+
+.dayC {
+    position: static;
+    width: 230px;
+    height: 140px;
+    border: 5px solid black;
+    float: left;
+    margin: 0 8px 7px;
+
+}
+
+*{
+    max-width: 1300px;
+}
