@@ -3,34 +3,12 @@ import React from "react";
 
 export default function Month() {
 
-
+    const createDays = () =>{
+        
+    };
 
     return (<>
 
-        <Day/>
-        <Day/>
-        <Day/>
-        <Day/>
-        <Day/>
-
-        <Day/>
-        <Day/>
-        <Day/>
-        <Day/>
-        <Day/>
-        
-        <Day/>
-        <Day/>
-        <Day/>
-        <Day/>
-        <Day/>
-        
-        <Day/>
-        <Day/>
-        <Day/>
-        <Day/>
-        <Day/>
-
-        <Day/>
+       
     </>);
 }

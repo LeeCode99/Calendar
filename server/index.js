@@ -15,9 +15,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());//middle ware, needs when requesting information from frontend to backend
 
-app.get('/api/get',(req,res)=>{
+app.get('/api/get', (req, res) => {
     const sqlSelect = "SELECT * FROM movie_review";
-    db.query(sqlSelect, (err,result)=>{
+    db.query(sqlSelect, (err, result) => {
         console.log(result);
         res.send(result);
     });
@@ -34,21 +34,17 @@ app.post('/api/insert', (req, res) => {
     });
 });
 
-app.delete('/api/delete/:movieName',(req,res)=>{
-    const name = req.params.movieName;
-    const sqlDelete = "DELETE FROM movie_review WHERE movie_name = (?) ;";
-    db.query(sqlDelete, name, (err,result) => {
+app.delete('/api/delete/:id', (req, res) => {
+    const id = req.params.id;
+
+    const sqlDelete = "DELETE FROM movie_review WHERE id = (?) ;";
+    db.query(sqlDelete, id, (err, result) => {
         console.log(err);
     });
 })
 
 
 app.get("/", (req, res) => {
-    // const sqlInsert = "INSERT INTO movie_review (movie_name, movie_review) VALUES ('inception','good movie');"
-    // db.query(sqlInsert, (err, result) => {
-    //     console.log(err);
-    //     res.send("Hello Worldlasefasefse");
-    // });
 
 });
 
