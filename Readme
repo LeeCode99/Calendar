@@ -1,0 +1,13 @@
+To run the codes - You must have sql.
+Install 
+
+Go to path:
+/client
+Command:
+npm start
+
+
+Go to path:
+/server
+Command:
+npm run devStart
